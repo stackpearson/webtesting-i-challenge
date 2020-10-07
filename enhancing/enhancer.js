@@ -32,10 +32,10 @@ function fail(item) {
 
   if (item.enhancement < 15) {
     item.durability = (item.durability - 5)
-  } else item.durability = (item.durability -10);
+  } else (item.durability = (item.durability - 10))
 
   if (item.enhancement > 16) {
-    item.enhancement = (item.enhancement -1)
+    item.enhancement = (item.enhancement - 1)
   } else {
     console.log('item enhancement is not greater than 16, not decreasing it by 1')
   }

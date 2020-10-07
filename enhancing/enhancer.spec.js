@@ -1,4 +1,4 @@
-const { success, repair } = require('./enhancer.js');
+const { success, repair, fail } = require('./enhancer.js');
 // test away!
 
 
@@ -62,4 +62,55 @@ describe('enhancer.js', () => {
         })
 
     })
+
+    describe('fail', () => {
+        it('should decrease the durability by 5 if the enhancement is less than 15', () => {
+            let item = {
+                name: 'item',
+                enhancement: 14,
+                durability: 50
+            }
+
+            const newItem = {
+                name: 'item',
+                enhancement: 14,
+                durability: 45
+            }
+
+            expect(newItem).toStrictEqual(fail(item));
+        })
+
+        it('should decrease durability by 10 for any enhancement values 15 or greater', () => {
+            let item = {
+                name: 'item',
+                enhancement: 15,
+                durability: 50
+            }
+
+            const newItem = {
+                name: 'item',
+                enhancement: 15,
+                durability: 40
+            }
+
+            expect(newItem).toStrictEqual(fail(item)); 
+        })
+
+        it('should decrease the enhancement level by 1 for any items with an enhancement value greater than 16', () => {
+            let item = {
+                name: 'item',
+                enhancement: 17,
+                durability: 50
+            }
+
+            const newItem = {
+                name: 'item',
+                enhancement: 16,
+                durability: 40
+            }
+
+            expect(newItem).toStrictEqual(fail(item)); 
+        })
+    })
+
 })
