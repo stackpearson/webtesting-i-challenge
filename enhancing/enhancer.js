@@ -5,7 +5,13 @@ module.exports = {
   get,
 };
 
+
+
 function success(item) {
+
+    item.durability = 100;
+
+
   return { ...item };
 }
 
